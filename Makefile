@@ -1,4 +1,4 @@
-ligo_compiler=docker run --rm -v "$$PWD":"$$PWD" -w "$$PWD" ligolang/ligo:0.41.0
+ligo_compiler=ligo
 PROTOCOL_OPT=--protocol ithaca
 JSON_OPT=--michelson-format json
 

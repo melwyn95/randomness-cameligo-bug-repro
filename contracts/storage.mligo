@@ -1,6 +1,5 @@
 #import "errors.mligo" "Errors"
 #import "parameter.mligo" "Parameter"
-#import "bytes_utils.mligo" "Convert"
 
 module Types = struct
     type t = {
@@ -51,7 +50,7 @@ module Utils = struct
         // convert hash seed into nat seed
         let seed : nat = match seed_bytes with 
         | None -> (failwith("could not construct a hash") : nat)
-        | Some hsh -> Convert.Utils.bytes_to_nat(hsh)
+        | Some hsh -> (failwith("could not construct a hash") : nat)
         in
         // generate a random nat (between range) based on the computed nat seed
         random_range last_seed seed min max
