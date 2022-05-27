@@ -8,7 +8,7 @@ type parameter = Parameter.Types.t
 type return = operation list * storage
 
 // Sender reveals its chest content
-let reveal(p, s : Parameter.Types.reveal_param * storage) : operation list * storage =
+let reveal(_, s : Parameter.Types.reveal_param * storage) : operation list * storage =
     let committed = fun (acc, elt : bool * address) : bool -> match Map.find_opt elt s.secrets with
         | None -> acc && false
         | Some _x -> acc && true
@@ -19,6 +19,6 @@ let reveal(p, s : Parameter.Types.reveal_param * storage) : operation list * sto
         
 let main(ep, store : parameter * storage) : return =
     match ep with 
-    | Commit(p) -> [],store
+    | Commit(_) -> [],store
     | Reveal(p) -> reveal(p, store)
-    | Reset(p) -> [],store
+    | Reset(_) -> [],store
