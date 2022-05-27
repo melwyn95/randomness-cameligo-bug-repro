@@ -14,7 +14,11 @@ let reveal(_, s : Parameter.Types.reveal_param * storage) : operation list * sto
         | Some _x -> acc && true
     in
     let _all_chests_committed = Set.fold committed s.participants true in
-    let _all_chests_committed = Set.fold committed s.participants true in
+    let revealed = fun (acc, elt : bool * address) : bool -> match Map.find_opt elt (Map.empty : (address, bool) map) with
+        | None -> acc && false
+        | Some _x -> acc && true
+    in
+    let all_chests_revealed = Set.fold revealed s.participants true in
     ([], s)
         
 let main(ep, store : parameter * storage) : return =
